@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Superhero Movies</title>
+    
+    <style>
+    body{
+        margin: 0;
+        padding: 0;
+        background: rgb(238, 187, 197);
+    }
+    .menu{
+        position: fixed;
+        background-color: rgb(0, 0, 0);
+        color:rgb(255, 255, 255);
+        font-family: fantasy;
+        font-size: 25px;
+        font-weight: 100;
+        width: 100%;
+        height: 50px;
+    }
+    .menu-left{
+        float: left;
+    }
+    .menu-left a{
+        color: rgb(255, 255, 255);
+        position:relative;
+        top:10px;
+        left: 10px;
+    }
+    .menu-left a:hover, .item a:hover{
+        color: crimson;
+    }
+    .search-bar{
+        padding-top: 7px;
+        float: right;
+        position:relative;
+        right: 10px;        
+    }
+    .input{
+        padding-top: 5px;
+    }
+    .button{
+        border-radius: 30px;
+        height: 40px;
+        width: 40px;
+        border-color: rgb(0, 0, 0);
+        text-align: center;
+        font-family: fantasy;
+        color: rgb(0, 0, 0);
+        font-size: 25px;
+        font-weight: 100;
+    }
+    .background{
+        display: flex;
+        justify-content: center;
+        background-color: crimson;
+        width: 100%;
+        height: 460px;
+        padding-top: 50px;
+    }
+    .main{
+        display: flex;
+        justify-content:space-between;
+        flex-wrap: wrap;
+        padding: 0 30px;
+    }
+    .item{
+        width: 300px;
+        padding: 10px;
+    }
+    a{
+        text-decoration: none;
+    }
+    img{
+        border-radius: 20px;
+    }
+    .item span a{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 120px;
+        text-align: center;
+        font-family: fantasy;
+        color: rgb(0, 0, 0);
+        font-size: 35px;
+        font-weight: 100;
+    }
+    .button:hover{
+        background-color:crimson;
+    }
+    </style>
+</head>
+<body>
+    <div class=container>
+        <div class=menu>
+            <div class=menu-left><a href="boxoffice">See Box-Office Over Time</a></div>
+            <div class=search-bar>
+                <form action="/handle_form" method="POST">
+                    <span>Search for my favorite movie</span>
+                    <input class=input name="movie_name" type="text"/>
+                    <input class=button type="submit" value="GO"/>
+                </form>
+            </div>
+        </div>
+        <div class=background>
+            <img src="https://superheroes.theringer.com/img/header-title.png" width=600/>
+            <img src="https://storage.googleapis.com/superheroes-theringer-com-cms/public/media/superheroes/51-The-Dark-Knight-medium.png" width=400/>
+        </div>
+        <div class=main>
+        {% for i in results %}
+            <div class=item>
+                <span>
+                <a href= detail/{{i[0]}}>No.{{i[0]-1}}         {{i[1]}}</a>
+                <img src={{i[2]}} width=300/>
+                </span>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: rgb(238, 187, 197);
+        }
+        a{
+            text-decoration: none;
+        }
+        .container{
+            padding: 50px 50px 30px;
+            display: flex;
+        }
+        img{
+            border-radius: 10px;
+            margin-right: 40px;
+        }
+        .button{
+            padding: 5px;
+            border-radius:20px;
+            background-color:rgb(0, 0, 0) ;
+            border-color: rgb(0, 0, 0);
+            text-align: center;
+            font-family: fantasy;
+            color: rgb(255, 255, 255);
+            font-size: 30px;
+            font-weight: 100;
+            float: right;
+        }
+        .name, .year{
+            font-family: fantasy;
+            color: rgb(0, 0, 0);
+            font-size: 80px;
+            font-weight: 500;
+        }
+        .year{
+            font-size: 30px;
+        }
+        .plot, .box-office, .role, .power{
+            font-size: 20px;
+            padding: 25px 0 0;
+        }
+        .role-button{
+            height: 80px;
+            width: 80px;
+            border-radius:80px;
+            background-color:rgb(0, 0, 0) ;
+            border-color: rgb(0, 0, 0);
+            font-family: fantasy;
+            color: rgb(255, 255, 255);
+            font-size: 25px;
+            font-weight: 90;
+        }
+        button:hover{
+            background-color:crimson;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class=container>
+        <img src={{result[3]}} width=300/>
+        <div class=right>
+            <a href='/'><button class=button>HOME PAGE</button></a>
+            <span class=name>{{result[1]}}</span>
+            <span class=year>({{result[2]}})</span>
+            <div class=plot><strong>Main Plot: </strong>{{result[4]}}</div>
+            <div class=box-office><strong>Box-office: </strong>{{result[5]}}</div>
+            <div class=role><strong>Main Role: </strong>{{result[6]}}</div>
+            {% if power == "sorry! Can not find the role!" %}
+                <div class=power><strong>Power-Star: </strong>{{power}}</div>
+            {% else %}
+                <a href=/role/{{name}}><button class=role-button>Power</button></a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
